@@ -1,0 +1,14 @@
+searchBy:
+  -
+   field: birth_dt
+   column: Дата рождения
+   index: 0
+  -
+   field:
+   column: Фамилия
+   index: 1
+
+resultFrom:
+  - uid
+  - СНИЛС
+  - Дата выдачи СНИЛС

@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+group 'ru.taskdata'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+ext {
+    fasterxmlVersion = '2.10.0.pr1'
+    lombokVersion = '1.18.8'
+    httpClient = '1.31.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.7'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+
+    compile group: 'com.google.http-client', name: 'google-http-client', version: httpClient
+    compile group: 'com.google.http-client', name: 'google-http-client-jackson2', version: httpClient
+
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: fasterxmlVersion
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: fasterxmlVersion
+
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    compile group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+mainClassName = 'App'

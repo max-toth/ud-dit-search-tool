@@ -1,0 +1,14 @@
+{
+  "findGroupBObj": {
+    "findCondBObj": [
+      {
+        "findExprBObj": {
+          "objectType": "Citizen",
+          "field": "last_name",
+          "binOper": "=",
+          "value": "Иванов"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1169 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Citizen",
+  "version": "0.9.4",
+  "description": "A Citizen Composite Object(http://www.jsonschema2pojo.org/)",
+  "type": "object",
+  "properties": {
+    "transactionid": {
+      "type": "string",
+      "title": "<Уникальный сквозной идентификатор операции для целей логирования>"
+    },
+    "etalon_id": {
+      "type": "string",
+      "title": "<Уникальный код гражданина в МДМ-системе>"
+    },
+    "mdm_id": {
+      "type": "string",
+      "title": "< ключ гражданина МДМ (формируется в КЗД)>"
+    },
+    "chronicle_id": {
+      "type": "string",
+      "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+    },
+    "pending": {
+      "type": "boolean",
+      "title": "<Признак тех. профиля. true - технический, false - эталон>"
+    },
+    "birth_dt": {
+      "title": "<Дата рождения>",
+      "type": "string",
+      "format": "date-time",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "gender_tp_code": {
+      "type": "string",
+      "title": "<Пол>"
+    },
+    "birth_place_line_one": {
+      "type": "string",
+      "title": "<Место рождения>"
+    },
+    "citizenship_id": {
+      "type": "array",
+      "title": "<Гражданство>",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resident_sign": {
+      "title": "<Резидент РФ>",
+      "type": "boolean"
+    },
+    "rip_date": {
+      "type": "string",
+      "format": "date-time",
+      "title": "<Дата смерти>",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "ext_upd_date": {
+      "title": "<Дата последнего обновления из системы-источника>",
+      "type": "string",
+      "format": "date-time",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "has_privilege": {
+      "title": "<Наличие льгот ЕРЛ>",
+      "type": "boolean"
+    },
+    "privilege_control": {
+      "title": "<Статус нахождения на контроле в ЕРЛ>",
+      "type": "boolean"
+    },
+    "pname_ext_upd_date": {
+      "title": "<Дата последнего обновления блока имени, поступившая из внешней системы>",
+      "type": "string",
+      "format": "date-time",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "del_sign": {
+      "title": "<Флаг удаления>",
+      "type": "boolean"
+    },
+    "spec_type": {
+      "title": "<Признак основного профиля(0-основной, 1-родственник)>",
+      "type": "integer"
+    },
+    "last_verified_date": {
+      "title": "<Дата последней проверки>",
+      "type": "string",
+      "format": "date-time",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "last_update_dt": {
+      "title": "<Дата последнего обновления в системе>",
+      "type": "string",
+      "format": "date-time",
+      "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "customTimezone": "Europe/Moscow"
+    },
+    "dirtystage": {
+      "title": "<Состояние профиля>",
+      "type": "integer"
+    },
+    "validationmask": {
+      "title": "<Атрибут отображения статуса валидации>",
+      "type": "integer"
+    },
+    "failedmask": {
+      "title": "<Атрибут отображения результата валидации>",
+      "type": "integer"
+    },
+    "sourcechannel": {
+      "title": "<Система источник>",
+      "type": "integer"
+    },
+    "last_name": {
+      "title": "<Фамилия>",
+      "type": "string"
+    },
+    "given_name_one": {
+      "title": "<Имя>",
+      "type": "string"
+    },
+    "given_name_two": {
+      "title": "Отчество",
+      "type": "string"
+    },
+    "rip_place": {
+      "title": "<Место смерти>",
+      "type": "string"
+    },
+    "rip_city_name": {
+      "title": "<Город смерти>",
+      "type": "string"
+    },
+    "rip_region_name": {
+      "title": "<Наименование субъекта смерти>",
+      "type": "string"
+    },
+    "rip_country_name": {
+      "title": "<Страна смерти>",
+      "type": "string"
+    },
+    "temporary_id": {
+      "type": "string",
+      "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+    },
+    "citizen_relatives": {
+      "type": "array",
+      "title": "Профили родственников гражданина",
+      "items": {
+        "title": "citizen_relatives",
+        "properties": {
+          "etalon_id": {
+            "type": "string",
+            "title": "<первичный ключ МДМ>"
+          },
+          "mdm_id": {
+            "type": "string",
+            "title": "<ссылка на ключ МДМ (формируется в КЗД)>"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "rel_tp_cd": {
+            "type": "string",
+            "title": "<Тип родственной связи>"
+          },
+          "access_level": {
+            "type": "integer",
+            "title": "<Уровень доступа Главного профиля к родственному>"
+          },
+          "last_update_dt": {
+            "type": "string",
+            "title": "<Дата последнего обновления>",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          }
+        }
+      }
+    },
+    "death_reason_inf": {
+      "type": "array",
+      "title": "Сведения о причинах смерти",
+      "items": {
+        "title": "death_reason_inf",
+        "properties": {
+          "death_reason_code": {
+            "type": "string",
+            "title": "<Код причины смерти>"
+          },
+          "death_reason_name": {
+            "type": "string",
+            "title": "<Причина смерти>"
+          }
+        }
+      }
+    },
+    "death_place_code": {
+      "type": "string",
+      "title": "<Место наступления смерти>"
+    },
+    "death_circumstances_code": {
+      "type": "string",
+      "title": "<Обстоятельства смерти>"
+    },
+    "documents": {
+      "type": "array",
+      "title": "Документы гражданина",
+      "items": {
+        "type": "object",
+        "title": "Document",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "id_tp_cd": {
+            "title": "<Ссылка на тип документа>",
+            "type": "string"
+          },
+          "doc_status_id": {
+            "title": "<Статус документа>",
+            "type": "string"
+          },
+          "doc_ext_status_id": {
+            "title": "<Внешний статус документа>",
+            "type": "string"
+          },
+          "doc_ext_status_date_from": {
+            "title": "<Дата начала действия внешнего статуса документа>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "end_dt": {
+            "title": "<Дата прекращения действия документа>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "identification_series": {
+            "title": "<Серия документа>",
+            "type": "string"
+          },
+          "ref_num": {
+            "title": "<Номер документа>",
+            "type": "string"
+          },
+          "start_dt": {
+            "title": "<Дата выдачи>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "record_number": {
+            "title": "<Номер актовой записи ЗАГС>",
+            "type": "string"
+          },
+          "record_date": {
+            "title": "<Дата актовой записи ЗАГС>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "message_number": {
+            "title": "<Идентификатор сообщения (имя файла)>",
+            "type": "string"
+          },
+          "message_date": {
+            "title": "<Дата сообщения>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "identification_issuer": {
+            "title": "<Место выдачи>",
+            "type": "string"
+          },
+          "comment": {
+            "title": "<В ЕЛК комментарий к ОМС родственника>",
+            "type": "string"
+          },
+          "identification_issuer_code": {
+            "title": "<Код подразделения, выдавшего документ>",
+            "type": "string"
+          },
+          "identification_passport_birth_place": {
+            "title": "<Место рождения по паспорту>",
+            "type": "string"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления в системе>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "expiry_dt": {
+            "title": "<Дата окончания действия>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "code": {
+            "title": "<тип родственника в формате ЕЛК>",
+            "type": "string"
+          },
+          "origin_block": {
+            "title": "<название исходного блок по ОМС из ЕЛК>",
+            "type": "string"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "confirming": {
+            "title": "<Подтверждение оператором>",
+            "type": "boolean"
+          },
+          "hpsm_validation_status": {
+            "title": "<Статус валидации в HPSM>",
+            "type": "string"
+          },
+          "hpsm_validation_date": {
+            "title": "<Дата последней проверки данных в HPSM>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "hpsm_comment": {
+            "title": "<Комментарий оператора>",
+            "type": "string"
+          },
+          "hpsm_number": {
+            "title": "<Номер заявки>",
+            "type": "string"
+          },
+          "ch_data_doc": {
+            "type": "array",
+            "title": "Список подтверждающих документов в ЦХЭД",
+            "items": {
+              "title": "ch_data_doc",
+              "properties": {
+                "doc_id": {
+                  "type": "string",
+                  "title": "<Идентификатор документа в ЦХЭД>"
+                },
+                "doc_type_code": {
+                  "type": "string",
+                  "title": "<Тип документа>"
+                },
+                "object_id": {
+                  "type": "string",
+                  "title": "<Идентификатор группировки>"
+                }
+              }
+            }
+          },
+          "doc_parent_id": {
+            "title": "<Родительский документ>",
+            "type": "string"
+          },
+          "mdm_docs_parent_docs_rel": {
+            "title": "<ссылка на ключ объекта МДМ (формируется в КЗД)>",
+            "type": "string"
+          },
+          "docs_parent_docs_rel": {
+            "title": "<первичный ключ родительского документа ЮниДата>",
+            "type": "string"
+          },
+          "confirmed_mfc": {
+            "title": "<Подтверждено в МФЦ>",
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "vehicles": {
+      "type": "array",
+      "title": "Транспортные средства",
+      "items": {
+        "type": "object",
+        "title": "Vehicle",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "<Описание>",
+            "type": "string"
+          },
+          "vin_number": {
+            "title": "<Идентификационный номер транспортного средства (VIN)>",
+            "type": "string"
+          },
+          "sts_number": {
+            "title": "<Серия и номер свидетельства о регистрации>",
+            "type": "string"
+          },
+          "reg_number": {
+            "title": "<Номер государственного регистрационного знака>",
+            "type": "string"
+          },
+          "pts_number": {
+            "title": "<Серия и номер паспорта транспортного средства (ПТС)>",
+            "type": "string"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "vehicles_docs_rel": {
+            "type": "array",
+            "title": "vehicles_docs_rel",
+            "items": {
+              "type": "object",
+              "title": "VehicleDocuments",
+              "properties": {
+                "document_id": {
+                  "title": "<первичный ключ документа ЮниДата>",
+                  "type": "string"
+                },
+                "mdm_document_id": {
+                  "title": "<ссылка на ключ объекта МДМ (формируется в КЗД)>",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "addresses": {
+      "type": "array",
+      "title": "Связь Гражданина с адресами 1:N, Может быть пустой null",
+      "items": {
+        "type": "object",
+        "title": "Address",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "addr_usage_tp_cd": {
+            "title": "<ссылка на справочник тип адреса>",
+            "type": "string"
+          },
+          "begin_date": {
+            "title": "<Дата начала действия>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "end_dt": {
+            "title": "<Дата прекращения действия актуальности>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "addr_line_one": {
+            "title": "<Адресная строка 1>",
+            "type": "string"
+          },
+          "addr_line_two": {
+            "title": "<Адресная строка 2>",
+            "type": "string"
+          },
+          "addr_line_three": {
+            "title": "<Адресная строка 3>",
+            "type": "string"
+          },
+          "unom": {
+            "title": "<UNOM>",
+            "type": "string"
+          },
+          "unad": {
+            "title": "<UNAD>",
+            "type": "string"
+          },
+          "moscow_district_id": {
+            "title": "<Код района>",
+            "type": "string"
+          },
+          "moscow_district_name": {
+            "title": "<Район>",
+            "type": "string"
+          },
+          "street_id": {
+            "title": "<Улица ID>",
+            "type": "string"
+          },
+          "street_omk": {
+            "title": "<Улица ОМК>",
+            "type": "string"
+          },
+          "street_name_ex": {
+            "title": "<Улица>",
+            "type": "string"
+          },
+          "building_name": {
+            "title": "<Дом (составной)>",
+            "type": "string"
+          },
+          "house_no": {
+            "title": "<Дом (номер)>",
+            "type": "string"
+          },
+          "corpus_no": {
+            "title": "<Дом (корпус)>",
+            "type": "string"
+          },
+          "stroenie_no": {
+            "title": "<Дом (строение)>",
+            "type": "string"
+          },
+          "residence_num": {
+            "title": "<Квартира>",
+            "type": "string"
+          },
+          "moscow_area_name": {
+            "title": "<Округ>",
+            "type": "string"
+          },
+          "moscow_area_ext_id": {
+            "title": "<Код округа>",
+            "type": "string"
+          },
+          "country": {
+            "title": "<Страна>",
+            "type": "string"
+          },
+          "country_id": {
+            "title": "<Страна (справочник)>",
+            "type": "string"
+          },
+          "region": {
+            "title": "<Регион>",
+            "type": "string"
+          },
+          "region_id": {
+            "title": "<Регион (справочник)>",
+            "type": "string"
+          },
+          "city_name": {
+            "title": "<Город>",
+            "type": "string"
+          },
+          "city_id": {
+            "title": "<Город (справочник)>",
+            "type": "string"
+          },
+          "kladr_id": {
+            "title": "<КЛАДР ID>",
+            "type": "string"
+          },
+          "room_no": {
+            "title": "<Номер помещения>",
+            "type": "string"
+          },
+          "postal_code": {
+            "title": "<Индекс>",
+            "type": "string"
+          },
+          "description": {
+            "title": "<Описание адреса>",
+            "type": "string"
+          },
+          "fias_id_building": {
+            "title": "<ИД ФИАС до дома>",
+            "type": "string"
+          },
+          "fias_id_street": {
+            "title": "<ИД ФИАС до улицы>",
+            "type": "string"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "confirming": {
+            "title": "<Подтверждение оператором>",
+            "type": "boolean"
+          },
+          "hpsm_validation_status": {
+            "title": "<Статус валидации в HPSM>",
+            "type": "string"
+          },
+          "hpsm_validation_date": {
+            "title": "<Дата последней проверки данных в HPSM>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "hpsm_comment": {
+            "title": "<Комментарий оператора в HPSM>",
+            "type": "string"
+          },
+          "hpsm_number": {
+            "title": "<Номер заявки в HPSM>",
+            "type": "string"
+          },
+          "confirmed_mfc": {
+            "title": "<Подтверждено в МФЦ>",
+            "type": "boolean"
+          },
+          "ch_data_addr": {
+            "type": "array",
+            "title": "Список подтверждающих документов в ЦХЭД",
+            "items": {
+              "title": "ch_data_addr",
+              "properties": {
+                "doc_id": {
+                  "type": "string",
+                  "title": "<Идентификатор документа в ЦХЭД>"
+                },
+                "doc_type_code": {
+                  "type": "string",
+                  "title": "<Тип документа>"
+                },
+                "object_id": {
+                  "type": "string",
+                  "title": "<Идентификатор группировки>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gkupays": {
+      "type": "array",
+      "title": "Недвижимость",
+      "items": {
+        "type": "object",
+        "title": "Gkupay",
+        "properties": {
+          "gkupay_address_rel": {
+            "title": "Ссылка на адрес etalon_id>",
+            "type": "string"
+          },
+          "mdm_gkupay_address_rel": {
+            "title": " ссылка на ключ объекта МДМ (формируется в КЗД)>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "epd": {
+            "title": "<Номер финансового лицевого счёта (ЕПД)>",
+            "type": "string"
+          },
+          "mesaccount": {
+            "title": "<Номер лицевого счёта (Мосэнергосбыт)>",
+            "type": "string"
+          },
+          "mesmeter": {
+            "title": "<Номер прибора учёта (Мосэнергосбыт)>",
+            "type": "string"
+          },
+          "phone": {
+            "title": "<Номер телефона>",
+            "type": "string"
+          },
+          "epd_comment": {
+            "title": "<Комментарий>",
+            "type": "string"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "estate_type": {
+            "type": "string",
+            "title": "<Тип недвижимости>"
+          },
+          "kadastr_number": {
+            "type": "string",
+            "title": "<Кадастровый номер>"
+          },
+          "confirming": {
+            "title": "<Подтверждение оператором>",
+            "type": "boolean"
+          },
+          "hpsm_validation_status": {
+            "type": "string",
+            "title": "<Статус валидации в HPSM>"
+          },
+          "hpsm_validation_date": {
+            "title": "<Дата последней  проверки данных в HPSM>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "hpsm_comment": {
+            "type": "string",
+            "title": "<Комментарий оператора в HPSM>"
+          },
+          "hpsm_number": {
+            "type": "string",
+            "title": "<Номер заявки>"
+          },
+          "ownership_right": {
+            "type": "string",
+            "title": "<Право владения>"
+          },
+          "paycode_renewal": {
+            "type": "string",
+            "title": "<Код плательщика за капитальный ремонт>"
+          },
+          "ch_data_gku": {
+            "type": "array",
+            "title": "Список подтверждающих документов в ЦХЭД",
+            "items": {
+              "title": "ch_data_gku",
+              "properties": {
+                "doc_id": {
+                  "type": "string",
+                  "title": "<Идентификатор документа в ЦХЭД>"
+                },
+                "doc_type_code": {
+                  "type": "string",
+                  "title": "<Тип документа>"
+                },
+                "object_id": {
+                  "type": "string",
+                  "title": "<Идентификатор группировки>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "users": {
+      "type": "array",
+      "title": "Связь Гражданина с пользователями систем 1:N",
+      "items": {
+        "type": "object",
+        "title": "User",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ ЮниДата>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "id_type": {
+            "title": "<Тип(ЕРЛ, SSO, ИСИ, ЕИРЦ)>",
+            "type": "string"
+          },
+          "id_value": {
+            "title": "<Значение идентификатора>",
+            "type": "string"
+          },
+          "enabled": {
+            "title": "<Признак Удален>",
+            "type": "boolean"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "is_confirmed_offline": {
+            "title": "<Признак подтвержден>",
+            "type": "boolean"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          }
+        }
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "title": "Связь Гражданина с Контактами 1:N",
+      "items": {
+        "type": "object",
+        "title": "Contact",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "cont_meth_cat_cd": {
+            "title": "<Тип контакта>",
+            "type": "string"
+          },
+          "ref_num": {
+            "title": "<Содержание контакта (телефон, e-mail)>",
+            "type": "string"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          }
+        }
+      }
+    },
+    "escredentials": {
+      "type": "array",
+      "title": "Связь Гражданина с реестром Доступ к внешним системам 1:N",
+      "items": {
+        "type": "object",
+        "title": "Escredential",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "escred_tp_cd": {
+            "title": "<Тип записи в ESCREDENTIALS>",
+            "type": "string"
+          },
+          "description": {
+            "title": "<Название учетной записи>",
+            "type": "string"
+          },
+          "login": {
+            "title": "<Логин>",
+            "type": "string"
+          },
+          "password": {
+            "title": "<Пароль>",
+            "type": "string"
+          },
+          "doc_number": {
+            "title": "<Номер документа>",
+            "type": "string"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          }
+        }
+      }
+    },
+    "workplaces": {
+      "type": "array",
+      "title": "Места работы",
+      "items": {
+        "type": "object",
+        "title": "Workplace",
+        "properties": {
+          "etalon_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "mdm_obj_id": {
+            "title": "<первичный ключ МДМ>",
+            "type": "string"
+          },
+          "del_sign": {
+            "title": "<Флаг удаления>",
+            "type": "boolean"
+          },
+          "fullname": {
+            "title": "<Полное наименование>",
+            "type": "string"
+          },
+          "shortname": {
+            "title": "<Сокращенное наименование>",
+            "type": "string"
+          },
+          "director_last_name": {
+            "title": "<Фамилия бухгалтера>",
+            "type": "string"
+          },
+          "director_given_name_one": {
+            "title": "<Имя бухгалтера>",
+            "type": "string"
+          },
+          "director_given_name_two": {
+            "title": "<Отчество бухгалтера>",
+            "type": "string"
+          },
+          "director_phone": {
+            "title": "<Телефон бухгалтера>",
+            "type": "string"
+          },
+          "inn": {
+            "type": "string",
+            "title": "<ИНН>"
+          },
+          "ogrn": {
+            "type": "string",
+            "title": "<ОГРН>"
+          },
+          "chronicle_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "ext_upd_date": {
+            "title": "<Дата последнего обновления, поступившая из системы-источника>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_verified_date": {
+            "title": "<Дата последней проверки>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "last_update_dt": {
+            "title": "<Дата последнего обновления>",
+            "type": "string",
+            "format": "date-time",
+            "customDateTimePattern": "yyyy-MM-dd HH:mm:ss.SSS",
+            "customTimezone": "Europe/Moscow"
+          },
+          "temporary_id": {
+            "type": "string",
+            "title": "<На стороне StageApp генерируется временный id для связи объектов при upsert в Юнидата>"
+          },
+          "workplace_address_rel": {
+            "type": "string",
+            "title": "<первичный ключ адреса ЮниДата>"
+          },
+          "mdm_workplaces_address_rel": {
+            "type": "string",
+            "title": "< ссылка на ключ объекта МДМ (формируется в КЗД)>"
+          }
+        }
+      }
+    }
+  }
+}
