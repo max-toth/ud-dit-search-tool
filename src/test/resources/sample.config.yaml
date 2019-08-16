@@ -1,14 +1,15 @@
 searchBy:
   -
-   field: birth_dt
-   column: Дата рождения
-   index: 0
+   field: doc_ser
+   index: 2
   -
-   field:
-   column: Фамилия
-   index: 1
+   field: doc_num
+   index: 3
 
 resultFrom:
-  - uid
-  - СНИЛС
-  - Дата выдачи СНИЛС
+  -
+   path: $.uid
+   label: Уникальный идентификатор
+  -
+   path: $.birth_dt
+   label: Дата рождения

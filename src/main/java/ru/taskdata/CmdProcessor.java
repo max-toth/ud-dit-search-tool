@@ -91,7 +91,6 @@ public class CmdProcessor {
     @VisibleForTesting
     static Optional<MappingConfig> readMappingConfig(String configFile) {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        InputStream stream;
         try (InputStream resource = CmdProcessor.class.getResourceAsStream(configFile)) {
             if (null == resource) {
                 try (FileInputStream fileResource = new FileInputStream(configFile)) {

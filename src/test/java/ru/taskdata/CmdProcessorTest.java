@@ -27,13 +27,11 @@ public class CmdProcessorTest {
         MappingConfig config = mappingConfig.get();
 
         // Assert
-        collector.checkThat(config.getResultFrom().length, equalTo(3));
-        collector.checkThat(config.getResultFrom()[0], equalTo("uid"));
-        collector.checkThat(config.getResultFrom()[1], equalTo("СНИЛС"));
-        collector.checkThat(config.getResultFrom()[2], equalTo("Дата выдачи СНИЛС"));
+        collector.checkThat(config.getResultFrom().length, equalTo(2));
+        collector.checkThat(config.getResultFrom()[0].getPath(), equalTo("$.uid"));
+        collector.checkThat(config.getResultFrom()[1].getPath(), equalTo("$.birth_dt"));
+
         collector.checkThat(config.getSearchBy().length, equalTo(2));
-        collector.checkThat(config.getSearchBy()[0].getColumn(), equalTo("Дата рождения"));
-        collector.checkThat(config.getSearchBy()[1].getColumn(), equalTo("Фамилия"));
     }
 
     @Test
@@ -43,12 +41,10 @@ public class CmdProcessorTest {
         MappingConfig config = mappingConfig.get();
 
         // Assert
-        collector.checkThat(config.getResultFrom().length, equalTo(3));
-        collector.checkThat(config.getResultFrom()[0], equalTo("uid"));
-        collector.checkThat(config.getResultFrom()[1], equalTo("СНИЛС"));
-        collector.checkThat(config.getResultFrom()[2], equalTo("Дата выдачи СНИЛС"));
+        collector.checkThat(config.getResultFrom().length, equalTo(2));
+        collector.checkThat(config.getResultFrom()[0].getLabel(), equalTo("Уникальный идентификатор"));
+        collector.checkThat(config.getResultFrom()[1].getLabel(), equalTo("Дата рождения"));
+
         collector.checkThat(config.getSearchBy().length, equalTo(2));
-        collector.checkThat(config.getSearchBy()[0].getColumn(), equalTo("Дата рождения"));
-        collector.checkThat(config.getSearchBy()[1].getColumn(), equalTo("Фамилия"));
     }
 }

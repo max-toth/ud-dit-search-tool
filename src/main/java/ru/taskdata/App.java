@@ -30,7 +30,8 @@ public class App {
                 });
     }
 
-    private static List<ResultData> getData(InputDataHolder inputDataHolderValue, SearchService searchService, List<SearchObjectWrapper> requestBodies) {
+    private static List<ResultData> getData(InputDataHolder inputDataHolderValue, SearchService searchService,
+                                            List<SearchObjectWrapper> requestBodies) {
         return requestBodies.stream()
                 .map(requestBody -> {
                     String json = searchService.doPost(requestBody.getObject());

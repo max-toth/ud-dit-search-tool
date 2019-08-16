@@ -36,11 +36,12 @@ public class CsvProcessor {
     private static final String EQ_BINARY_OPERATOR = "=";
 
     public static List<SearchObjectWrapper> read(File file, CsvColumnInfo[] columnInfos) {
-        try (CSVParser parser = CSVParser.parse(file, UTF_8, EXCEL)) {
+        try (CSVParser parser = CSVParser.parse(file, UTF_8,
+                EXCEL.withDelimiter(';').withFirstRecordAsHeader())) {
             return parser.getRecords().stream()
-                    .map(record ->
-                    {
-                        ProfileDataSearchRequestBObjType object = ProfileDataSearchRequestBObjType.builder().findGroupBObj(FindGroupBObjType.builder()
+                    .map(record -> {
+                        ProfileDataSearchRequestBObjType object = ProfileDataSearchRequestBObjType.builder()
+                                .findGroupBObj(FindGroupBObjType.builder()
                                 .logicOper("AND")
                                 .findCondBObj(buildConditionObject(columnInfos, parser, record))
                                 .build())
@@ -74,7 +75,7 @@ public class CsvProcessor {
                         .forEach(row -> values.add(String.valueOf(row.getValue())));
 
                 try {
-                    printer.printRecord(values.toArray(new String[values.size()]));
+                    printer.printRecord(values.iterator());
                 } catch (IOException e) {
                     log.error("Error on record printing", e);
                 }
@@ -89,17 +90,15 @@ public class CsvProcessor {
                                                                CSVRecord record) {
         return Stream.of(columnInfos)
                 .map(column -> {
-                    String value = readValue(parser, record, column);
+                    String value = readValue(record, column);
                     return buildConditionExpression(column, value);
                 })
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
-    private static String readValue(CSVParser parser, CSVRecord record, CsvColumnInfo column) {
-        return parser.getHeaderNames().contains(column.getColumn())
-                ? record.get(column.getColumn())
-                : record.get(column.getIndex());
+    private static String readValue(CSVRecord record, CsvColumnInfo column) {
+        return record.get(column.getIndex());
     }
 
     private static FindCondBObjType buildConditionExpression(CsvColumnInfo column, String value) {

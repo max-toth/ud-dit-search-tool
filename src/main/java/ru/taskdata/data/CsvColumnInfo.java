@@ -14,9 +14,7 @@ public class CsvColumnInfo {
     private String field;
 
     /**
-     * Название колонки в csv файле
+     * колонка в CSV файле
      */
-    private String column;
-
     private int index;
 }

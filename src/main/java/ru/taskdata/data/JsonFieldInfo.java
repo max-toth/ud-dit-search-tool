@@ -1,11 +1,13 @@
 package ru.taskdata.data;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class JsonFieldInfo {
-    private final String path;
-    private final String label;
+    private String path;
+    private String label;
 }
